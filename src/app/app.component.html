@@ -1,18 +1,19 @@
 <mat-toolbar color="primary" class="app-header">
-  <div><a href="#" target="_blank" class="positronx">Sala de Juegos</a></div>
-  <div *ngIf="!(name$ | async)">
-    <span class="nav-tool-items">
-      <a mat-button routerLink="login" routerLinkActive="active">Iniciar sesión</a>
-      <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Registrarse</a>
-    </span>
-  </div>
+    <div><a href="#" target="_blank" class="positronx">Sala de Juegos</a></div>
+        <div *ngIf="!(name$ | async)">
+        <span class="nav-tool-items">
+            <a mat-button routerLink="login" routerLinkActive="active">Iniciar sesión</a>
+            <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Registrarse</a>
+        </span>
+    </div>
 
-  <div *ngIf="(name$ | async)">
-    <span   class="nav-tool-items">
-      <mat-label>Bienvenido! {{(name$ | async)}}</mat-label>
-      <a mat-button mat-raised-button (click)="logout()" routerLinkActive="active">Logout</a>
-    </span>
-  </div>
+    <div *ngIf="(name$ | async)">
+        <span class="nav-tool-items">
+            <a class="welcome-label" mat-button mat-raised-button routerLink="about-me">Sobre mi</a>
+            <mat-label class="welcome-label">Bienvenido! {{(name$ | async)}}</mat-label>
+            <a mat-button mat-raised-button (click)="logout()" routerLinkActive="active">Logout</a>
+        </span>
+    </div>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

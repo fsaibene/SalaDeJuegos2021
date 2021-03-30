@@ -19,31 +19,31 @@ export class AuthService {
     public router: Router,  
     public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {    
+    
     this.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-      } else {
-        localStorage.setItem('user', "");
-      }
-
-      let storagedUser = localStorage.getItem('user');
-      console.log(storagedUser);
+        if (user) {
+            this.userData = user;
+            localStorage.setItem('user', JSON.stringify(this.userData));
+        } else {
+            localStorage.setItem('user', "");
+        }
+        let storagedUser = localStorage.getItem('user');    
+        console.log(storagedUser);
     })
   }
 
   // Sign in with email/password
-  public async login(email: string, password: string): Promise<void> {
-    try {
-      const result = await this.afAuth.signInWithEmailAndPassword(email, password);
-      this.ngZone.run(() => {
-        this.router.navigate(['home']);
-      });
-      this.setUserData(result.user);
-      this.loggedUser.next(email);
-    } catch (error) {
-      window.alert(error.message);
-    }
+    public async login(email: string, password: string): Promise<void> {
+        try {
+            const result = await this.afAuth.signInWithEmailAndPassword(email, password);
+            this.ngZone.run(() => {
+            this.router.navigate(['home']);
+            });
+            this.setUserData(result.user);
+            this.loggedUser.next(email);
+        } catch (error) {
+            window.alert(error.message);
+        }
   }
 
   // Sign up with email/password

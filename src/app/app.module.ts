@@ -11,12 +11,18 @@ import { AngularMaterialModule } from './modules/angular-material.modules';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { firebaseConfig } from './firebase-config/firebase-config';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AuthService } from './auth/auth.service';
+import { GameSelectorComponent } from './components/game-selector/game-selector.component';
+import { GameHomeComponent } from './components/game-home/game-home.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     drawableModuleComponents,
+    GameSelectorComponent,
+    GameHomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,9 +33,10 @@ import { AuthService } from './auth/auth.service';
     AngularMaterialModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuardService],
   bootstrap: [AppComponent],
   schemas : [CUSTOM_ELEMENTS_SCHEMA]
 })

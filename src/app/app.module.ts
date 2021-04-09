@@ -16,6 +16,10 @@ import { AuthService } from './auth/auth.service';
 import { GameSelectorComponent } from './components/game-selector/game-selector.component';
 import { GameHomeComponent } from './components/game-home/game-home.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { PiedraPapelTijeraComponent } from './components/games/piedra-papel-tijera/piedra-papel-tijera.component';
+import { MemotestComponent } from './components/games/memotest/memotest.component';
+import { TatetiComponent } from './components/games/tateti/tateti.component';
+import { MiJuegoComponent } from './components/games/mi-juego/mi-juego.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,10 @@ import { AuthGuardService } from './services/auth-guard.service';
     drawableModuleComponents,
     GameSelectorComponent,
     GameHomeComponent,
+    PiedraPapelTijeraComponent,
+    MemotestComponent,
+    TatetiComponent,
+    MiJuegoComponent,
   ],
   imports: [
     BrowserModule,

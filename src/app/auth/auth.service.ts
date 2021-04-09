@@ -3,7 +3,9 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 import { BehaviorSubject } from 'rxjs';
+import { UserLogged } from '../classes/message';
 import { User } from '../classes/user';
+import { LoggingService } from '../services/logging.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +19,7 @@ export class AuthService {
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,  
+    public logging: LoggingService,
     public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {    
     
@@ -37,7 +40,11 @@ export class AuthService {
         try {
             const result = await this.afAuth.signInWithEmailAndPassword(email, password);
             this.ngZone.run(() => {
-            this.router.navigate(['home']);
+                this.router.navigate(['home']);
+                let user = new UserLogged();
+                user.userLogged = email;
+                user.date = Date.now();
+                this.logging.create(user);
             });
             this.setUserData(result.user);
             this.loggedUser.next(email);

@@ -8,8 +8,8 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public password: string = "";
-  public email: string = "";
+  public password: string = "123456789";
+  public email: string = "test@test.com";
 
   constructor(public auth: AuthService, public router: Router) { }
 

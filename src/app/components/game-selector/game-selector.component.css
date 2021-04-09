@@ -1,0 +1,23 @@
+.example-card {
+    height: 460px;
+    width: 150px;
+}
+.img-container {
+    height: 100px !important;
+    position: absolute;
+}
+.absolute-position {
+    position: initial;
+}
+.mat-focus-indicator {
+    display: flow-root;
+    height: 400px;
+    width: 140px;
+}
+.mat-card-title {
+    margin-bottom: 30px;
+    width: 135px;
+}
+.pointer-class {
+    cursor: pointer;
+}

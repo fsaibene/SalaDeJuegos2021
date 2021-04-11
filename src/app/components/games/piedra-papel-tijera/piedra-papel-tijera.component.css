@@ -1,0 +1,6 @@
+.absolute-position {
+    position: initial;
+    width: 100px !important;
+    height: 100%;
+    display: inline-block;
+}

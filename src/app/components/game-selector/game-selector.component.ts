@@ -30,7 +30,7 @@ export class GameSelectorComponent implements OnInit {
             gameRoute = "memotest";
             break;
             case 3:
-            gameRoute = "miuego";
+            gameRoute = "mijuego";
             break;
         }
         this.router.navigate([gameRoute]);

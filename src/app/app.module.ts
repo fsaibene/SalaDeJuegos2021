@@ -20,6 +20,8 @@ import { PiedraPapelTijeraComponent } from './components/games/piedra-papel-tije
 import { MemotestComponent } from './components/games/memotest/memotest.component';
 import { TatetiComponent } from './components/games/tateti/tateti.component';
 import { MiJuegoComponent } from './components/games/mi-juego/mi-juego.component';
+import { BoardComponent } from './components/games/tateti/board/board.component';
+import { SquareComponent } from './components/games/tateti/square/square.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { MiJuegoComponent } from './components/games/mi-juego/mi-juego.component
     MemotestComponent,
     TatetiComponent,
     MiJuegoComponent,
+    BoardComponent,
+    SquareComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,8 +14,8 @@
     height: 400px;
     width: 140px;
 }
-.mat-card-title {
-    margin-bottom: 30px;
+.mat-card-title-format {
+    margin-bottom: 30px !important;
     width: 135px;
 }
 .pointer-class {

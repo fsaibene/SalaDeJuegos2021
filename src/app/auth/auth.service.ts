@@ -14,7 +14,7 @@ import { LoggingService } from '../services/logging.service';
 export class AuthService {
   userData: any; // Save logged in user data
   public loggedUser: BehaviorSubject<string> = new BehaviorSubject<string>("");
-
+  public localStorageUser : string = "";
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
@@ -38,16 +38,19 @@ export class AuthService {
   // Sign in with email/password
     public async login(email: string, password: string): Promise<void> {
         try {
-            const result = await this.afAuth.signInWithEmailAndPassword(email, password);
-            this.ngZone.run(() => {
-                this.router.navigate(['home']);
-                let user = new UserLogged();
-                user.userLogged = email;
-                user.date = Date.now();
-                this.logging.create(user);
+            await this.afAuth.signInWithEmailAndPassword(email, password).then(result => {
+                if(result.user?.email){
+                    this.ngZone.run(() => {
+                        this.setUserData(result.user);
+                        localStorage.setItem('user', JSON.stringify(result.user));
+                        this.router.navigate(['home']);
+                        let user = new UserLogged();
+                        user.userLogged = email;
+                        user.date = Date.now();
+                        this.logging.create(user);
+                    });
+                }
             });
-            this.setUserData(result.user);
-            this.loggedUser.next(email);
         } catch (error) {
             window.alert(error.message);
         }
@@ -93,9 +96,10 @@ export class AuthService {
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     let usr = localStorage.getItem('user');
-    if(usr != null) {
+    if(usr) {
       let userObj = JSON.parse(usr);
-      return (userObj !== null && userObj.emailVerified !== false) ? true : false;
+      this.loggedUser.next(userObj.email);
+      return userObj && userObj.email;
     }
     return false;
   }
@@ -125,6 +129,7 @@ export class AuthService {
       photoURL: user.photoURL,
       emailVerified: user.emailVerified
     }
+    this.loggedUser.next(user.email);
     return userRef.set(userData, {
       merge: true
     })

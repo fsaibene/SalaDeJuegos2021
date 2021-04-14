@@ -1,17 +1,28 @@
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<mat-card>
-    <div class="absolute-position">
+<mat-card-title class="game-title">Piedra papel o tijera!</mat-card-title>
+<mat-card class="container">
+    <div class="image-div" (click)="play('r')">
         <img mat-card-image src="/assets/juegos/piedrapapeltijera/rock.png" >
     </div>   
-     <div class="absolute-position">
+     <div class="image-div" (click)="play('p')">
         <img mat-card-image src="/assets/juegos/piedrapapeltijera/paper.png" >
     </div>    
-    <div class="absolute-position">
+    <div class="image-div" (click)="play('s')">
         <img mat-card-image src="/assets/juegos//piedrapapeltijera/scissors.png" >
     </div>
 </mat-card>
+<mat-card>
+    <div class="response">
+        Elegiste: {{userSelection}}
+    </div>
+    <div class="response">
+        El oponente eligio: {{oponentSelection}}
+    </div>
+     <div class="response" [ngStyle]="{'color': responseColor }">
+        {{response}}
+    </div>
+</mat-card>
+<mat-card-footer>
+    <div class="game-footer">
+         Puntaje actual
+    </div>
+</mat-card-footer>

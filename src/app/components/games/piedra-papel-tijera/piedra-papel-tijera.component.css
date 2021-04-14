@@ -4,3 +4,29 @@
     height: 100%;
     display: inline-block;
 }
+
+.container {
+    margin: 10px;
+    display: flex; /* or inline-flex */
+    flex-direction: row;
+    justify-content: center;
+    min-height: 100px;
+}
+.image-div {
+    width: 100px !important;
+    height: 100%;
+    background-color: white;
+    padding: 15px;
+    border: 4px solid #333333;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.image-div:active{
+    background-color:#626078;
+}
+
+.response {
+    font-family: fantasy;
+    font-size: 18px;
+    text-align: center;
+}

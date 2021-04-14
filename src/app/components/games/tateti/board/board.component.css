@@ -1,0 +1,15 @@
+main {
+    display: grid;
+    grid-template-columns: 152px 152px 150px;
+    grid-gap: 0px;
+}
+  
+app-square {
+    border: 1px gray solid;
+    height: 150px;
+    width: 150px;
+}
+.container {
+    display: inline-grid;
+    max-height: 400px;
+}

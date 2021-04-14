@@ -106,3 +106,15 @@ body {
 .main-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
 	padding: 0.8375em 0;
 }
+
+.game-title {
+    padding: 20px;
+    text-align: center;
+    font-family: fantasy;
+}
+.game-footer {
+    margin-top: 15px;
+    font-size: 20px;
+    text-align: center;
+    font-family: fantasy;
+}

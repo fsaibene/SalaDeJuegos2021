@@ -22,6 +22,7 @@ import { TatetiComponent } from './components/games/tateti/tateti.component';
 import { MiJuegoComponent } from './components/games/mi-juego/mi-juego.component';
 import { BoardComponent } from './components/games/tateti/board/board.component';
 import { SquareComponent } from './components/games/tateti/square/square.component';
+import { ChatRoomComponent } from './components/chat-room/chat-room.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { SquareComponent } from './components/games/tateti/square/square.compone
     MiJuegoComponent,
     BoardComponent,
     SquareComponent,
+    ChatRoomComponent,
   ],
   imports: [
     BrowserModule,

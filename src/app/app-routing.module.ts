@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutMeComponent } from './components/about-me/about-me.component';
+import { ChatRoomComponent } from './components/chat-room/chat-room.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { MemotestComponent } from './components/games/memotest/memotest.component';
 import { MiJuegoComponent } from './components/games/mi-juego/mi-juego.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'forgot-password', component:  ForgotPasswordComponent },
     { path: 'about-me', component: AboutMeComponent, canActivate: [AuthGuardService] },
+    { path: 'chatroom', component: ChatRoomComponent, canActivate: [AuthGuardService] },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuardService] },
     { path: 'juego', loadChildren: () => import('../../src/app/modules/games/games.module').then(m => m.GamesModule)},
     { path: '', pathMatch: 'full', redirectTo: 'login' }

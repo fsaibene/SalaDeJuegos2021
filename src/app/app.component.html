@@ -5,19 +5,15 @@
           </button>
         <a routerLink="home" class="positronx">Sala de Juegos</a>
         <a *ngIf="(name$ | async)" class="welcome-label" mat-button routerLink="about-me">Sobre mi</a>
+        <a *ngIf="(name$ | async)" class="welcome-label" mat-button routerLink="about-me">Sala de chat</a>
         <span class="menu-spacer"></span>
-
     </div>
-    
-
-
     <div *ngIf="!(name$ | async)">
         <div class="nav-tool-items">
             <a mat-button routerLink="login" routerLinkActive="active">Iniciar sesión</a>
             <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Registrarse</a>
         </div>
     </div>
-
     <div *ngIf="(name$ | async)">
         <div class="nav-tool-items">
             <mat-label class="welcome-label">Bienvenido! {{(name$ | async)}}</mat-label>
@@ -25,5 +21,4 @@
         </div>
     </div>
 </mat-toolbar>
-
 <router-outlet></router-outlet>

@@ -18,19 +18,19 @@ export class GameSelectorComponent implements OnInit {
     }
     public selectGame(){
         console.log("select game " + this.gameId);
-        let gameRoute = ""
+        let gameRoute = "juego/"
         switch(this.gameId){
             case 0:
-            gameRoute = "piedrapapeltijera";
+            gameRoute += "piedrapapeltijera";
             break;
             case 1:
-            gameRoute = "tateti";
+            gameRoute += "tateti";
             break;
             case 2:
-            gameRoute = "memotest";
+            gameRoute += "memotest";
             break;
             case 3:
-            gameRoute = "mijuego";
+            gameRoute += "mijuego";
             break;
         }
         this.router.navigate([gameRoute]);

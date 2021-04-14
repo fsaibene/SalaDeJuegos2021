@@ -17,10 +17,7 @@ const routes: Routes = [
     { path: 'forgot-password', component:  ForgotPasswordComponent },
     { path: 'about-me', component: AboutMeComponent, canActivate: [AuthGuardService] },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuardService] },
-    { path: 'tateti', component: TatetiComponent, canActivate: [AuthGuardService] },
-    { path: 'piedrapapeltijera', component: PiedraPapelTijeraComponent, canActivate: [AuthGuardService] },
-    { path: 'memotest', component: MemotestComponent, canActivate: [AuthGuardService] },
-    { path: 'mijuego', component: MiJuegoComponent, canActivate: [AuthGuardService] },
+    { path: 'juego', loadChildren: () => import('../../src/app/modules/games/games.module').then(m => m.GamesModule)},
     { path: '', pathMatch: 'full', redirectTo: 'login' }
 ];
 

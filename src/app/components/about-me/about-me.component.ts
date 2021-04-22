@@ -5,11 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './about-me.component.html',
   styleUrls: ['./about-me.component.css']
 })
-export class AboutMeComponent implements OnInit {
-
+export class AboutMeComponent {
+  public showGameInfo: boolean = false;
   constructor() { }
 
-  ngOnInit(): void {
+  public aboutMe(choice: string) {
+    this.showGameInfo = choice != "me";
   }
 
 }

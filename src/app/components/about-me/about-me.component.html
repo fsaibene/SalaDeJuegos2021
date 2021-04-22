@@ -1,13 +1,25 @@
 <div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="box">
         <mat-card-header style="margin-bottom: 30px;">
-            <mat-card-title>Sobre mi</mat-card-title>
+            <button class="title-button" [ngStyle]="{'background-color': showGameInfo ? 'white' : '#673ab7'}" (click)="aboutMe('me')" mat-raised-button>Sobre mi</button>
+            <button (click)="aboutMe('game')" [ngStyle]="{'background-color': !showGameInfo ? 'white' : '#673ab7'}" class="title-button" mat-raised-button>Sobre mi juego</button> 
         </mat-card-header>
-        <div>
-            <img mat-card-image src="../../../assets/profile.jpg" >
+
+        <div *ngIf="!showGameInfo" [ngClass]="{'fade-in': showGameInfo }">  
+            <div style="margin-bottom: 10px;">
+                <img class="img-container" mat-card-image src="../../../assets/profile.jpg" >
+            </div>
+            <mat-label>Hola! Mi nombre es Fernando Saibene y estoy cursando la carrera TUP en la UTN FRA</mat-label>
+            <br>
+            <mat-label>Tengo 26 años y actualmente soy programador en Axoft SA trabajando como fullstack!</mat-label>
         </div>
-        <mat-label>Hola! Mi nombre es Fernando Saibene y estoy cursando la carrera TUP en la UTN FRA</mat-label>
-        <br>
-        <mat-label>Tengo 26 años y actualmente soy programador en Axoft SA trabajando como fullstack!</mat-label>
+        <div *ngIf="showGameInfo">  
+            <div style="margin-bottom: 10px;">
+                <img class="img-container" mat-card-image src="../../../assets/bjack.jpg" >
+            </div>
+            <mat-label>El blackjack, también llamado veintiuno, es un juego de cartas, propio de los casinos con una </mat-label>
+            <br>
+            <mat-label>o más barajas inglesas de 52 cartas sin los comodines, que consiste en sumar un valor lo más próximo a 21 pero sin pasarse.</mat-label>
+        </div>
     </mat-card>
 </div>

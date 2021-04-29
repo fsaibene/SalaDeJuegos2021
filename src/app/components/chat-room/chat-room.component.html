@@ -1,16 +1,20 @@
 <div fxLayout="row" fxLayoutAlign="center center">
 <mat-card class="box">
-    <mat-card class="chat-box">
-        <mat-card-header style="margin-bottom: 30px;">
-        <mat-title>Sala de chat</mat-title>
-        </mat-card-header>
-        <div class="card-body">
-            <!-- <h5 class="card-title">Special title treatment</h5> -->
-           <div *ngFor="let item of listadoMensajes">
-               <ul class="list-group message" id="ul">
-                   <li class="list-group-item disabled" id="liFecha">{{getDate(item.date)}} - {{item.user}}: </li>
-                   <li class="list-group-item" id="liUser">{{item.text}}</li>        
-                </ul>
+    <mat-card>
+        <div class="chat-box" #scrollMe>
+            <mat-card-header style="margin-bottom: 30px;">
+                <mat-title>Sala de chat</mat-title>
+            </mat-card-header>
+            <div class="card-body">
+                <div *ngFor="let item of listadoMensajes">
+                    <div class="message">
+                        <span class="datos">
+                            <div class="username">{{getUserName(item.user)}}:</div>
+                            <div class="date">{{getDate(item.date)}} </div>
+                        </span>
+                        <div class="message-text" [ngClass]="{'float-right-attr': isMyMessage(item.user) }">{{item.text}}</div>        
+                    </div>
+                </div>
             </div>
         </div>
     </mat-card>

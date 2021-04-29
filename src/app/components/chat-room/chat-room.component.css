@@ -1,0 +1,31 @@
+.box {
+    width: 600px;
+    margin-top: 40px;
+    height: 450px;
+}
+
+.chat-box {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 310px;
+}
+
+.input-box {
+    height: 70px;
+    width: auto;
+    padding: 10 !important;
+}
+
+.input-text {
+    width: 215px;;
+}
+
+.message {
+    border-radius: 25px;
+    border: 2px solid #8c7bbb;
+}
+
+.input-button {
+    display: inline-block;
+    margin-left: 10px;
+}

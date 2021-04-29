@@ -5,8 +5,8 @@ import { Message } from '../classes/message';
 @Injectable({
   providedIn: 'root'
 })
-export class MessagesService {
-    public dbpath: string = "/messages";
+export class ChatserviceService{
+    public dbpath: string = "/chatroom";
     protected menssagesRef: AngularFirestoreCollection<Message>;
     
     constructor(private db: AngularFirestore) {

@@ -1,5 +1,7 @@
 export class Message {
     public text: string = "";
+    public user: string = "";
+    public date: string = "";
 }
 
 export class UserLogged {

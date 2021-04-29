@@ -1,1 +1,29 @@
-<p>chat-room works!</p>
+<div fxLayout="row" fxLayoutAlign="center center">
+<mat-card class="box">
+    <mat-card class="chat-box">
+        <mat-card-header style="margin-bottom: 30px;">
+        <mat-title>Sala de chat</mat-title>
+        </mat-card-header>
+        <div class="card-body">
+            <!-- <h5 class="card-title">Special title treatment</h5> -->
+           <div *ngFor="let item of listadoMensajes">
+               <ul class="list-group message" id="ul">
+                   <li class="list-group-item disabled" id="liFecha">{{getDate(item.date)}} - {{item.user}}: </li>
+                   <li class="list-group-item" id="liUser">{{item.text}}</li>        
+                </ul>
+            </div>
+        </div>
+    </mat-card>
+    <mat-card class="input-box">
+    <div class="input-group mb-3">
+        <mat-form-field class="input-text example-full-width">
+            <mat-label>Leave a comment</mat-label>
+            <textarea matInput [(ngModel)]="inputMensaje"  placeholder="Escribi tu mensaje.."></textarea>
+        </mat-form-field>
+        <div class="input-group-append input-button">
+            <button color="primary" mat-raised-button class="btn btn-primary" id="basic-addon2" (click)="enviarMensaje()">Enviar</button>  
+        </div>
+    </div>
+</mat-card>
+</mat-card>
+    </div>

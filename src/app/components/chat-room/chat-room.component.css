@@ -22,6 +22,7 @@
 
 .message {
     border-radius: 25px;
+    background-color: lightyellow;
     border: 1px solid #8c7bbb;
     padding-left: 12px;
     padding-right: 12px;

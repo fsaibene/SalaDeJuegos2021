@@ -1,9 +1,8 @@
 :host {
     margin-top: 20px;
     width: 500px;
-    height: 500px;
     background-color: #fff;
-    height: 530px;
+    height: 470px;
     border-radius: 4px;
     padding: 10px 5px;
     display: flex;
@@ -26,3 +25,4 @@ card:nth-child(4n) {
         height: 450px;
     }
 }
+

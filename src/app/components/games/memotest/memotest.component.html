@@ -1,1 +1,8 @@
-<app-chessboard [cards$]="lista"></app-chessboard>
+<div fxLayout="row" fxLayoutAlign="center center">
+    <app-chessboard (seleccion)="seleccion($event)"[cards$]="lista"></app-chessboard>
+    <mat-card>
+        <div class="response" [ngStyle]="{'color': responseColor }">
+           {{response}}
+       </div>
+    </mat-card>
+</div>

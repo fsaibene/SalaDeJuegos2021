@@ -10,14 +10,23 @@ import { getGameCards } from './model/card';
 })
 export class MemotestComponent implements OnInit {
     public lista: any;
+    public responseColor: string = "black";
+    public response: string = "Elija 2 cartas!";
 
     constructor() { }
 
     ngOnInit(): void {
-        let asd = getGameCards();
-        let obs = new BehaviorSubject<ICard[]>(null);
-        obs.next(asd);
+        let obs = new BehaviorSubject<ICard[]>(getGameCards());
         this.lista = obs;
+    }
+    public seleccion(evt){
+        if(evt){
+            this.responseColor = "green";
+            this.response = "Encontrados!"
+        } else {
+            this.responseColor = "red";
+            this.response = "Intente de nuevo!"
+        }
     }
 
 }

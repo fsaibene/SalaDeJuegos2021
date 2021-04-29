@@ -23,6 +23,8 @@ import { MiJuegoComponent } from './components/games/mi-juego/mi-juego.component
 import { BoardComponent } from './components/games/tateti/board/board.component';
 import { SquareComponent } from './components/games/tateti/square/square.component';
 import { ChatRoomComponent } from './components/chat-room/chat-room.component';
+import { CardComponent } from './components/games/memotest/card/card.component';
+import { ChessboardComponent } from './components/games/memotest/chessboard/chessboard.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { ChatRoomComponent } from './components/chat-room/chat-room.component';
     BoardComponent,
     SquareComponent,
     ChatRoomComponent,
+    CardComponent,
+    ChessboardComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,5 @@
+<app-card
+  *ngFor="let card of (cards$ | async)"
+  [info]="card"
+  (click)="flipCard(card)"
+></app-card>

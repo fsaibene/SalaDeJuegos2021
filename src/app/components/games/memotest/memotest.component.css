@@ -3,3 +3,17 @@
     font-size: 18px;
     text-align: center;
 }
+.message-container{
+    margin: auto;
+    width: 262px;;
+}
+.message-container-2{
+    margin: auto;
+}
+.master-container {
+    display: block !important;
+}
+.card-container {
+    display: inline-block;
+    position:relative;
+}

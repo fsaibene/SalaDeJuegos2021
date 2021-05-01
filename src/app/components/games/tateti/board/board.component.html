@@ -1,8 +1,11 @@
 <h1>Simbolo Jugador: {{ player }} </h1>
 <div class="container">
     <button mat-button color="mat-primary" (click)="newGame()">Nuevo Juego</button>
-    <h2 *ngIf="winner">
-        Player {{ winner }} won the game!
+    <h2 *ngIf="winner && winner != 'draw'">
+        El jugador {{ winner }} ganó!
+    </h2>
+    <h2 *ngIf="winner == 'draw'">
+        Empate!
     </h2>
     <main>
         <app-square 

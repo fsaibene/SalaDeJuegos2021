@@ -8,3 +8,10 @@ export class UserLogged {
     public userLogged: string = "";
     public date: number = Date.now();
 }
+
+export class Score{
+    public user: string;
+    public game: string;
+    public date: string;
+    public score : {};
+}

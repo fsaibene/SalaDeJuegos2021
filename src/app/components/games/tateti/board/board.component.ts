@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
+import { Score } from 'src/app/classes/message';
+import { ScoreSerivce } from 'src/app/services/score.service';
 
 @Component({
   selector: 'app-board',
@@ -12,7 +15,7 @@ export class BoardComponent implements OnInit {
     public winner: string = "";
     public gameEnded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   
-    constructor() {}
+    constructor(private scoreService: ScoreSerivce, private authService: AuthService) {}
   
     public ngOnInit() {
       this.newGame();
@@ -36,15 +39,45 @@ export class BoardComponent implements OnInit {
       }
   
       if(!this.xIsNext) {
-          this.makeMove(this.getRandomMoveIndex());
+          let randomMove = this.getRandomMoveIndex();
+          if(randomMove != -1) {
+              this.makeMove(randomMove);
+          } else {
+                this.winner = this.calculateWinner();
+          } 
       }
 
       this.winner = this.calculateWinner();
       if(this.winner){
+          if(idx != -1 && !this.gameEnded.value) {
+              this.saveScore();
+          }
           this.gameEnded.next(true);
       }
     }
-  
+
+    private saveScore() {
+        let score = new Score();
+        score.game = "tateti";
+        score.date = Date.now().toString();
+        score.user = this.authService.loggedUser.value;
+        let resultWon = this.getResult(); 
+        score.score = {
+            result: resultWon
+        };
+        console.log("a ver q pasa")
+        this.scoreService.create(score);
+    }
+
+    private getResult(){
+        if(this.winner == "draw"){
+            return "draw";
+        } else if(this.winner == "X") {
+            return "won";
+        }
+        return "lost";
+    }
+
     public getRandomMoveIndex(): number {
         let indexes = new Array<number>();
         let count = 0;
@@ -57,7 +90,9 @@ export class BoardComponent implements OnInit {
         if(indexes.length > 0) {
             return indexes[Math.floor(Math.random() * indexes.length)];
         }
-        console.log("revisar");
+        if(count == 9) {
+            return -1
+        }
         return 0;
     }
 
@@ -81,6 +116,10 @@ export class BoardComponent implements OnInit {
         ) {
           return this.squares[a];
         }
+      }
+      let leftSquares = this.squares.filter(s => s != "O" && s != "X");
+      if(leftSquares.length == 0){
+          return "draw";
       }
       return "";
     }

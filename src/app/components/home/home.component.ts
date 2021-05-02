@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
         let msg = new Message();
         msg.text = this.messageText;
         this.msgService.create(msg).then(result => {
-            console.log(result);
+            // console.log(result);
         }).catch(e => console.log(e))
     }
 }

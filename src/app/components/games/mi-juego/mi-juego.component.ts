@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mi-juego.component.css']
 })
 export class MiJuegoComponent implements OnInit {
+    title = 'Blackjack';
 
   constructor() { }
 

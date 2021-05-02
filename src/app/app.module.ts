@@ -25,6 +25,10 @@ import { SquareComponent } from './components/games/tateti/square/square.compone
 import { ChatRoomComponent } from './components/chat-room/chat-room.component';
 import { CardComponent } from './components/games/memotest/card/card.component';
 import { ChessboardComponent } from './components/games/memotest/chessboard/chessboard.component';
+import { ButtonPanelComponent } from './components/blackjack/button-panel/button-panel.component';
+import { CardViewComponent } from './components/blackjack/card-view/card-view.component';
+import { FlipComponent } from './components/blackjack/flip/flip.component';
+import { HandComponent } from './components/blackjack/hand/hand.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +45,10 @@ import { ChessboardComponent } from './components/games/memotest/chessboard/ches
     ChatRoomComponent,
     CardComponent,
     ChessboardComponent,
+    ButtonPanelComponent,
+    CardViewComponent,
+    FlipComponent,
+    HandComponent,
   ],
   imports: [
     BrowserModule,

@@ -55,7 +55,6 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked {
                 auxListadoMensaje.push(msg);
 
             }
-            console.log(this.listadoMensajes);  
             this.listadoMensajes = auxListadoMensaje.sort((a, b) => a.date.localeCompare(b.date));
             this.scrollToBottom();
         })
@@ -72,7 +71,7 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked {
         newMsg.text = this.inputMensaje;
         newMsg.user = this.auth.loggedUser.value;
         this.db.create(newMsg).then(resp => {
-            console.log(resp);
+            // console.log(resp);
         })
 
         this.inputMensaje = '';

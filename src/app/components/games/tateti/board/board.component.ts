@@ -65,7 +65,6 @@ export class BoardComponent implements OnInit {
         score.score = {
             result: resultWon
         };
-        console.log("a ver q pasa")
         this.scoreService.create(score);
     }
 

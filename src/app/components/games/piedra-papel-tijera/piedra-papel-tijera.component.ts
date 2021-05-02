@@ -49,7 +49,6 @@ export class PiedraPapelTijeraComponent implements OnInit {
         let computerChoice = this.getComputerChoice();
         this.oponentSelection = this.getItemName(computerChoice);
         const playUserComp = userChoice + computerChoice;
-        console.log(`Jugada realizada: ${playUserComp}`);
         switch (playUserComp){
           // Ganamos
           case 'rs':

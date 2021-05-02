@@ -29,6 +29,7 @@ import { ButtonPanelComponent } from './components/blackjack/button-panel/button
 import { CardViewComponent } from './components/blackjack/card-view/card-view.component';
 import { FlipComponent } from './components/blackjack/flip/flip.component';
 import { HandComponent } from './components/blackjack/hand/hand.component';
+import { ScoreResultComponent } from './components/score-result/score-result.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { HandComponent } from './components/blackjack/hand/hand.component';
     CardViewComponent,
     FlipComponent,
     HandComponent,
+    ScoreResultComponent,
   ],
   imports: [
     BrowserModule,

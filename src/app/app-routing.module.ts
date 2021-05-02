@@ -10,6 +10,7 @@ import { TatetiComponent } from './components/games/tateti/tateti.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ScoreResultComponent } from './components/score-result/score-result.component';
 import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: 'forgot-password', component:  ForgotPasswordComponent },
     { path: 'about-me', component: AboutMeComponent, canActivate: [AuthGuardService] },
     { path: 'chatroom', component: ChatRoomComponent, canActivate: [AuthGuardService] },
+    { path: 'score-result', component: ScoreResultComponent, canActivate: [AuthGuardService] },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuardService] },
     { path: 'juego', loadChildren: () => import('../../src/app/modules/games/games.module').then(m => m.GamesModule)},
     { path: '', pathMatch: 'full', redirectTo: 'login' }

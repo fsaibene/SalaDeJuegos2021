@@ -1,0 +1,45 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box large-box">
+        <mat-card-header style="margin-bottom: 30px;">
+            <button class="title-button" [ngStyle]="{'background-color': !isSelectedGame('ppt') ? 'white' : '#673ab7'}" (click)="selectGame('ppt')" mat-raised-button>Piedra papel o tijera</button>
+            <button (click)="selectGame('tateti')" [ngStyle]="{'background-color': !isSelectedGame('tateti') ? 'white' : '#673ab7'}" class="title-button" mat-raised-button>Ta Te Ti</button> 
+            <button (click)="selectGame('memotest')" [ngStyle]="{'background-color': !isSelectedGame('memotest') ? 'white' : '#673ab7'}" class="title-button" mat-raised-button>Memotest</button> 
+            <button (click)="selectGame('blackjack')" [ngStyle]="{'background-color': !isSelectedGame('blackjack') ? 'white' : '#673ab7'}" class="title-button" mat-raised-button>Blackjack</button> 
+        </mat-card-header>
+
+        <div *ngIf="isSelectedGame('ppt')" [ngClass]="{'fade-in': isSelectedGame('ppt') }"> 
+            <div style="margin-bottom: 10px;">
+                <img class="img-container" mat-card-image src="../../../assets/juegos/ppt.jpg" >
+            </div>
+            <mat-list role="list">
+                <mat-list-item *ngFor="let score of (pptScores$ | async)" role="listitem">
+                    <div>
+                        {{score.user}}
+                        {{score.game}}
+                        {{getDate(score.date)}}
+                        {{score.score['computerSelection']}}
+                        {{score.score['userSelection']}}
+                        {{score.score['gameResult']}}
+                    </div>
+
+                </mat-list-item>
+            </mat-list>
+        </div>
+        
+        <div *ngIf="isSelectedGame('tateti')">  
+            <div style="margin-bottom: 10px;">
+                <img class="img-container" mat-card-image src="../../../assets/juegos/tateti.jpg" >
+            </div>
+        </div>
+        <div *ngIf="isSelectedGame('memotest')">  
+            <div style="margin-bottom: 10px;">
+                <img class="img-container" mat-card-image src="../../../assets/juegos/memory-game-icon.png" >
+            </div>
+        </div>
+        <div *ngIf="isSelectedGame('blackjack')">  
+            <div style="margin-bottom: 10px;">
+                <img class="img-container" mat-card-image src="../../../assets/bjack.jpg" >
+            </div>
+        </div>
+    </mat-card>
+</div>

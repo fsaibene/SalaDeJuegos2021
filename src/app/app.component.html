@@ -6,6 +6,7 @@
         <a routerLink="home" class="positronx">Sala de Juegos</a>
         <a *ngIf="(name$ | async)" class="welcome-label" mat-button routerLink="about-me">Sobre mi</a>
         <a *ngIf="(name$ | async)" class="welcome-label" mat-button routerLink="chatroom">Sala de chat</a>
+        <a *ngIf="(name$ | async)" class="welcome-label" mat-button routerLink="score-result">Mis puntajes</a>
         <span class="menu-spacer"></span>
     </div>
     <div *ngIf="!(name$ | async)">

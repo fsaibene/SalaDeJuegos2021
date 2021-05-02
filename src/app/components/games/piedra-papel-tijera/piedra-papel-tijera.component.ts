@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
+import { Score } from 'src/app/classes/message';
+import { ScoreSerivce } from 'src/app/services/score.service';
 
 @Component({
   selector: 'app-piedra-papel-tijera',
@@ -11,7 +14,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
     public userSelection: string = "";
     public responseColor: string = "red";
 
-    constructor() { }
+    constructor(private authService: AuthService, private scoreService: ScoreSerivce) { }
 
     ngOnInit(): void {
 
@@ -29,19 +32,35 @@ export class PiedraPapelTijeraComponent implements OnInit {
         return "nananana";
     }
 
-    private win(): void {
+    private win(gameResult: string, userSelection: string, computerSelection: string): void {
         this.response = "Ganaste :D";
         this.responseColor = "green";
+        this.saveScore(gameResult, userSelection, computerSelection);
     }
 
-    private lose(): void {
+    private lose(gameResult: string, userSelection: string, computerSelection: string): void {
         this.response = "Perdiste D:";
         this.responseColor = "red";
+        this.saveScore(gameResult, userSelection, computerSelection);
     }
 
-    private draw(): void {
+    private draw(gameResult: string, bothSelection: string): void {
         this.response = "Empate!! ._.";
         this.responseColor = "#673ab7";
+        this.saveScore(gameResult, bothSelection, bothSelection);
+    }
+
+    private saveScore(gameResult: string, userSelection: string, computerSelection: string): void{
+        let score = new Score();
+        score.date = Date.now().toString();
+        score.game = "ppt";
+        score.user = this.authService.loggedUser.value;
+        score.score = {
+            gameResult: gameResult,
+            userSelection: userSelection,
+            computerSelection: computerSelection
+        };
+        this.scoreService.create(score);
     }
 
     public play(userChoice: string): void {
@@ -54,19 +73,19 @@ export class PiedraPapelTijeraComponent implements OnInit {
           case 'rs':
           case 'sp':
           case 'pr':
-            this.win();
+            this.win("win", this.userSelection, this.oponentSelection);
             break;
           // Gana la computadora
           case 'rp':
           case 'ps':
           case 'sr':
-            this.lose();
+            this.lose("lose", this.userSelection, this.oponentSelection);
             break;
           // Empatamos
           case 'rr':
           case 'pp':
           case 'ss':
-            this.draw();
+            this.draw("draw", this.userSelection);
             break;
         }
     }

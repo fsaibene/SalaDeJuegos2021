@@ -34,6 +34,7 @@ button.stay:active {
 
 button.deal {
     background-color: green;
+    width: fit-content;
 }
 
 button.deal:active {
@@ -43,7 +44,7 @@ button.deal:active {
 div.message {
     font-family: sans-serif;
     border: none;
-    color: white;
+    color: black;
     font-size: 1.5em;
     height: 40px;
     margin: 2px;

@@ -1,5 +1,9 @@
 import { Injectable  } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
+import { Score } from 'src/app/classes/message';
 import { Card } from 'src/app/components/blackjack/card';
+import { ScoreSerivce } from '../score.service';
 import { DealerService} from './dealer.service';
 
 const RESTART_WAIT: number = 3000;
@@ -26,6 +30,8 @@ export class GameStateService {
 
   constructor(
     private dealerService: DealerService,
+    private scoreService: ScoreSerivce,
+    private authService: AuthService
   ) {
     this.setup();
   }
@@ -94,7 +100,7 @@ export class GameStateService {
     if (this.firstCardsJustDealt()) {
 
       // Blackjack
-      if ( this.blackjack()) {
+      if (this.blackjack()) {
         if (!this.playerBlackjack()) {
           setTimeout(() => { 
             this.gameState = 'Lose';
@@ -261,30 +267,29 @@ export class GameStateService {
   }
 
   restart(): void {
-    this.logLastGame();
     setTimeout(() => {
       this.dealerService.freshDeck();
       // clear the arrays while keeping the reference
       this._playerCards.length = 0;
       this._dealerCards.length = 0;
+      this.logLastGame();
       this.setup();
     }, RESTART_WAIT);
   }
 
   logLastGame(): void {
-    console.log('Game')
-    console.log(`Dealer cards: `);
-    this._dealerCards.forEach(c => {
-      console.log(`    ${c.face} of ${c.suit}s`);
-    })
-    console.log(`Player cards: `);
-    this._playerCards.forEach(c => {
-      console.log(`    ${c.face} of ${c.suit}s`);
-    })
-    console.log(`Dealer total: ${this.dealerScore}`);
-    console.log(`Player total: ${this.playerScore}`);
-    console.log(`Final state: ${this.gameState}`);
-    console.log();
+    if(this.gameState != "Start" && this.gameState != "Dealing" && this.gameState != "Stay"){
+        let score = new Score();
+        score.date = Date.now().toString();
+        score.game = "blackjack";
+        score.user = this.authService.loggedUser.value;
+        score.score = {
+            gameState: this.gameState,
+            playerScore: this.playerScore,
+            dealerScore: this.dealerScore
+        };
+        this.scoreService.create(score);
+    }
   }
 }
 

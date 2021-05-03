@@ -1,8 +1,8 @@
 <div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="box">
         <mat-card-header style="margin-bottom: 30px;">
-            <button class="title-button" [ngStyle]="{'background-color': showGameInfo ? 'white' : '#673ab7'}" (click)="aboutMe('me')" mat-raised-button>Sobre mi</button>
-            <button (click)="aboutMe('game')" [ngStyle]="{'background-color': !showGameInfo ? 'white' : '#673ab7'}" class="title-button" mat-raised-button>Sobre mi juego</button> 
+            <button class="title-button" [ngStyle]="{'background-color': showGameInfo ? 'white' : '#673ab7', 'color': showGameInfo ? 'inherit': 'white'}" (click)="aboutMe('me')" mat-raised-button>Sobre mi</button>
+            <button (click)="aboutMe('game')" [ngStyle]="{'background-color': !showGameInfo ? 'white' : '#673ab7', 'color': !showGameInfo ? 'inherit': 'white'}" class="title-button" mat-raised-button>Sobre mi juego</button> 
         </mat-card-header>
 
         <div *ngIf="!showGameInfo" [ngClass]="{'fade-in': showGameInfo }">  

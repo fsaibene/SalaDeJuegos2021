@@ -30,6 +30,7 @@ import { CardViewComponent } from './components/blackjack/card-view/card-view.co
 import { FlipComponent } from './components/blackjack/flip/flip.component';
 import { HandComponent } from './components/blackjack/hand/hand.component';
 import { ScoreResultComponent } from './components/score-result/score-result.component';
+import { ScoreListComponent } from './components/score-list/score-list.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ScoreResultComponent } from './components/score-result/score-result.com
     FlipComponent,
     HandComponent,
     ScoreResultComponent,
+    ScoreListComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,20 @@
+<mat-grid-list class="list-container" rowHeight="3rem" cols="5" role="list">
+    <mat-grid-tile class="header-grid">Usuario</mat-grid-tile>
+    <mat-grid-tile class="header-grid">Fecha</mat-grid-tile>
+
+    <mat-grid-tile class="header-grid" *ngFor="let column of extraColumns" class="header-grid">
+        {{column.name}}
+    </mat-grid-tile>
+
+    <ng-container *ngFor="let score of (lista$ | async)" role="listitem">
+        <mat-grid-tile class="data-grid">
+            {{score.user}}
+        </mat-grid-tile>
+        <mat-grid-tile class="data-grid">
+            {{getDate(score.date)}}
+        </mat-grid-tile>
+        <mat-grid-tile *ngFor="let column of extraColumns" class="data-grid">
+            {{ formatData(column, score)}}
+        </mat-grid-tile>
+    </ng-container>
+</mat-grid-list>

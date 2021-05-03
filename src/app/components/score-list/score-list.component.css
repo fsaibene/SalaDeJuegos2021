@@ -1,0 +1,15 @@
+.header-grid {
+    border: solid black 1px;
+    padding: 0 !important;
+    font-family: fantasy !important;
+}
+.data-grid {
+    border: solid black 1px;
+    padding: 0 !important;
+    font-family: sans-serif;
+    text-align: center;
+    font-size: small;
+}
+.list-container {
+    width: 565px;
+}

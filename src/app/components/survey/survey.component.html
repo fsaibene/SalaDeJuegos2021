@@ -1,0 +1,25 @@
+<div class="contenedor">
+    <mat-card-title class="mat-card-title game-title">Encuesta de {{selectedGame}}</mat-card-title>
+    <form class="contenedor" [formGroup]="fg">
+        <mat-form-field class="input-form">
+            <input matInput formControlName="nombre" type="text" placeholder="Nombre">
+        </mat-form-field>
+        
+        <mat-form-field class="input-form">
+            <input matInput  formControlName="apellido" type="text" placeholder="Apellido">
+        
+        </mat-form-field>
+        <mat-form-field class="input-form">
+            <input matInput  formControlName="apellido" type="text" placeholder="Apellido">
+        </mat-form-field>
+
+        <mat-form-field class="input-form">
+            <input matInput  formControlName="apellido" type="text" placeholder="Apellido">
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" color="primary">Sumar</button>
+    </form>
+    
+    <p>La suma de los dos valores es:{{selectedGame}}</p>
+    
+  </div>

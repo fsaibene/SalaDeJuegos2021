@@ -31,6 +31,9 @@ import { FlipComponent } from './components/blackjack/flip/flip.component';
 import { HandComponent } from './components/blackjack/hand/hand.component';
 import { ScoreResultComponent } from './components/score-result/score-result.component';
 import { ScoreListComponent } from './components/score-list/score-list.component';
+import { SurveyComponent } from './components/survey/survey.component';
+import { SurveyButtonComponent } from './components/survey/survey-button/survey-button.component';
+import { ErrorComponent } from './components/survey/error/error.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,9 @@ import { ScoreListComponent } from './components/score-list/score-list.component
     HandComponent,
     ScoreResultComponent,
     ScoreListComponent,
+    SurveyComponent,
+    SurveyButtonComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,

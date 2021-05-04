@@ -17,19 +17,19 @@
             <div style="margin-bottom: 10px;">
                 <img class="img-container" mat-card-image src="../../../assets/juegos/tateti.jpg" >
             </div>
-            <app-score-list [lista$]="pptScores$" [extraColumns]="pptExtraColumns"></app-score-list>
+            <app-score-list [lista$]="tatetiScores$" [extraColumns]="tatetiExtraColumns"></app-score-list>
         </div>
         <div *ngIf="isSelectedGame('memotest')">
             <div style="margin-bottom: 10px;">
                 <img class="img-container" mat-card-image src="../../../assets/juegos/memory-game-icon.png" >
             </div>
-            <app-score-list [lista$]="pptScores$" [extraColumns]="pptExtraColumns"></app-score-list>
+            <app-score-list [lista$]="memotestScores$" [extraColumns]="memotestExtraColumns"></app-score-list>
         </div>
         <div *ngIf="isSelectedGame('blackjack')">
             <div style="margin-bottom: 10px;">
                 <img class="img-container" mat-card-image src="../../../assets/bjack.jpg" >
             </div>
-            <app-score-list [lista$]="pptScores$" [extraColumns]="pptExtraColumns"></app-score-list>
+            <app-score-list [lista$]="blackjackScores$" [extraColumns]="blackjackExtraColumns"></app-score-list>
         </div>
     </mat-card>
 </div>

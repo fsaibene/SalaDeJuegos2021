@@ -1,4 +1,5 @@
-<div fxLayout="row" class="master-container" fxLayoutAlign="center center">
+<div fxLayout="row" class="master-container" style="margin-top: 20px;" fxLayoutAlign="center center">
+    <mat-card-title class="mat-card-title game-title">Memotest</mat-card-title>
     <app-chessboard class="message-container-2" (seleccion)="seleccion($event)"[cards$]="lista"></app-chessboard>
     <div class="message-container">
         <mat-card class="card-container">

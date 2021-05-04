@@ -4,6 +4,7 @@ import { filter, map } from 'rxjs/operators';
 import { Columns } from 'src/app/classes/columns';
 import { Score } from 'src/app/classes/message';
 import { ScoreSerivce } from 'src/app/services/score.service';
+import { BLACKJACK_COLUMNS, MEMOTEST_COLUMNS, PPT_COLUMNS, TATETI_COLUMNS } from './extra-columns';
 
 @Component({
   selector: 'app-score-result',
@@ -12,29 +13,29 @@ import { ScoreSerivce } from 'src/app/services/score.service';
 })
 export class ScoreResultComponent implements OnInit {
     public selectedGame: string = "ppt";
-    listadoMensajes: any[];
-    pptScores$: Observable<Score[]>;
-    pptExtraColumns: Array<Columns> = new Array<Columns>();
+    public listadoMensajes: any[];
+    public pptExtraColumns: Array<Columns> = PPT_COLUMNS;
+    public tatetiExtraColumns: Array<Columns> = TATETI_COLUMNS;
+    public memotestExtraColumns: Array<Columns> = MEMOTEST_COLUMNS;
+    public blackjackExtraColumns: Array<Columns> = BLACKJACK_COLUMNS;
+
+    public pptScores$: Observable<Score[]>;
+    public tatetiScores$: Observable<Score[]>;
+    public memotestScores$: Observable<Score[]>;
+    public blackjackScores$: Observable<Score[]>;
+    
     constructor(public scoreService: ScoreSerivce) { 
-        this.pptExtraColumns.push(
-            new Columns("Seleccion Jugador", "userSelection", null),
-            new Columns("Seleccion PC", "computerSelection", null),
-            new Columns("Resultado", "gameResult", (data) => {
-                    switch(data){
-                        case 'win':
-                            return "Gano!";
-                        case 'draw':
-                            return "Empato!";
-                        case "lose":
-                            return "Perdio!"
-                    }
-                    return "nada";
-                })
-            );
+    }
+
+    private getListFromService(collectionName: string){
+        return this.scoreService.getAll().valueChanges().pipe(map(values => values.filter(p => p.game == collectionName)));
     }
 
     public ngOnInit(): void {
-        this.pptScores$ = this.scoreService.getAll().valueChanges().pipe(map(values => values.filter(p => p.game == "ppt")))
+        this.pptScores$ = this.getListFromService("ppt");
+        this.tatetiScores$ = this.getListFromService("tateti");
+        this.memotestScores$ = this.getListFromService("memotest");
+        this.blackjackScores$ = this.getListFromService("blackjack");
     }
 
     public isSelectedGame(game: string){
@@ -43,5 +44,10 @@ export class ScoreResultComponent implements OnInit {
 
     public selectGame(game: string) {
         this.selectedGame = game;
+    }
+
+    public getColumnsNumber(arr: Array<Columns>): number
+    {
+        return arr.length + 2;
     }
 }

@@ -12,4 +12,7 @@
 }
 .list-container {
     width: 565px;
+    max-height: 350px;
+    overflow: scroll;
+    overflow-x: hidden;
 }

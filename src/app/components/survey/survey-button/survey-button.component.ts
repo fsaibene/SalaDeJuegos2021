@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class SurveyButtonComponent implements OnInit {
     @Input() selectedGame: string;
+    @Input() fixTop: boolean = false;
     constructor(private router: Router) { }
 
     ngOnInit(): void {

@@ -1,25 +1,58 @@
-<div class="contenedor">
+<div class="contenedor" *ngIf="!surveySent2 else surveySent">
     <mat-card-title class="mat-card-title game-title">Encuesta de {{selectedGame}}</mat-card-title>
-    <form class="contenedor" [formGroup]="fg">
+    <form class="contenedor" [formGroup]="fg" (ngSubmit)="onSubmit(fg)">
         <mat-form-field class="input-form">
             <input matInput formControlName="nombre" type="text" placeholder="Nombre">
         </mat-form-field>
+        <app-error [needValidate$]="needValidate$" [control]="fg.controls['nombre']" ></app-error>
         
         <mat-form-field class="input-form">
             <input matInput  formControlName="apellido" type="text" placeholder="Apellido">
-        
         </mat-form-field>
-        <mat-form-field class="input-form">
-            <input matInput  formControlName="apellido" type="text" placeholder="Apellido">
-        </mat-form-field>
+        <app-error [needValidate$]="needValidate$" [control]="fg.controls['apellido']" ></app-error>
 
         <mat-form-field class="input-form">
-            <input matInput  formControlName="apellido" type="text" placeholder="Apellido">
+            <input matInput  formControlName="edad" type="number" placeholder="Edad">
         </mat-form-field>
+        <app-error [needValidate$]="needValidate$" [control]="fg.controls['edad']" ></app-error>
 
-        <button mat-raised-button type="submit" color="primary">Sumar</button>
+        <mat-form-field class="input-form">
+            <input matInput  formControlName="telefono" type="number" placeholder="Telefono">
+        </mat-form-field>
+        <app-error [needValidate$]="needValidate$" [control]="fg.controls['telefono']" ></app-error>
+
+        <mat-label>Qué puntaje le darias a ese juego?</mat-label>
+        <br>
+        <mat-radio-group formControlName="puntaje" class="input-form" aria-label="Qué puntaje le darías a este juego?">
+            <mat-radio-button value="1">1</mat-radio-button>
+            <mat-radio-button value="2">2</mat-radio-button>
+            <mat-radio-button value="3">3</mat-radio-button>
+            <mat-radio-button value="4">4</mat-radio-button>
+            <mat-radio-button value="5">5</mat-radio-button>
+        </mat-radio-group>
+        <app-error [needValidate$]="needValidate$" [control]="fg.controls['puntaje']" ></app-error>
+        <br>
+        <mat-form-field class="input-form" appearance="fill">
+            <mat-label>Le recomendarías este juego a un amigo?</mat-label>
+            <mat-select  formControlName="recomienda">
+            <mat-option value="si">Si</mat-option>
+            <mat-option value="no">No</mat-option>
+            <mat-option value="nose">No sé</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <app-error [needValidate$]="needValidate$" [control]="fg.controls['recomienda']" ></app-error>
+
+        <mat-form-field  class="example-form-field">
+            <mat-label>Comentarios</mat-label>
+            <input matInput formControlName="comentarios" type="text">
+        </mat-form-field>
+        <app-error [needValidate$]="needValidate$" [control]="fg.controls['comentarios']" ></app-error>
+
+        <button mat-raised-button [disabled]="disableButton" type="submit" color="primary">Enviar encuesta</button>
     </form>
-    
-    <p>La suma de los dos valores es:{{selectedGame}}</p>
-    
-  </div>
+</div>
+<ng-template #surveySent>
+    <div class="contenedor">
+        <mat-card-title class="mat-card-title game-title">Muchas gracias! Se ha enviado tu encuesta de {{selectedGame}}</mat-card-title>
+    </div>
+</ng-template>

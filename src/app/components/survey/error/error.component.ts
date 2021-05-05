@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,12 +9,12 @@ import { Observable } from 'rxjs';
 })
 export class ErrorComponent implements OnInit {
 
-    @Input() control: FormControl;
+    @Input() control: AbstractControl;
     @Input() needValidate$: Observable<boolean>;
     constructor() { }
 
     ngOnInit() {
-        this.needValidate$.subscribe(val => {console.log(this.control)});
+        // this.needValidate$.subscribe(val => {console.log(this.control)});
     }
 
 }

@@ -15,3 +15,13 @@ export class Score{
     public date: string;
     public score : {};
 }
+
+export class Survey {
+    public nombre: string;
+    public apellido: string;
+    public telefono: number;
+    public edad: number;
+    public recomienda: string;
+    public puntaje: number;
+    public comentarios: string;
+}

@@ -6,7 +6,14 @@
         Debe tener un minimo de {{control.errors.minlength.requiredLength}} caracteres
     </span>
     <span class="error" *ngIf="control && control.errors?.maxlength">
-        Debe tener un maximo de x
+        Debe tener un maximo de {{control.errors.maxlength.requiredLength}} caracteres
+    </span>
+
+    <span class="error" *ngIf="control && control.errors?.min">
+        Debe tener un minimo de {{control.errors.min.min}}
+    </span>
+    <span class="error" *ngIf="control && control.errors?.max">
+        Debe tener un máximo de {{control.errors.max.max}}
     </span>
 
     <span class="error" *ngIf="control && control.errors?.email">

@@ -34,6 +34,7 @@ import { ScoreListComponent } from './components/score-list/score-list.component
 import { SurveyComponent } from './components/survey/survey.component';
 import { SurveyButtonComponent } from './components/survey/survey-button/survey-button.component';
 import { ErrorComponent } from './components/survey/error/error.component';
+import { HangedComponent } from './components/games/hanged/hanged.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { ErrorComponent } from './components/survey/error/error.component';
     SurveyComponent,
     SurveyButtonComponent,
     ErrorComponent,
+    HangedComponent,
   ],
   imports: [
     BrowserModule,

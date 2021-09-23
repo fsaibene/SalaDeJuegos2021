@@ -21,7 +21,7 @@ export class GameSelectorComponent implements OnInit {
         let gameRoute = "juego/"
         switch(this.gameId){
             case 0:
-            gameRoute += "piedrapapeltijera";
+            gameRoute += "hanged";
             break;
             case 1:
             gameRoute += "tateti";

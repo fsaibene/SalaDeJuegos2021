@@ -3,7 +3,7 @@
   <div class="word-container">
     <div class="letter" *ngFor="let letter of word">
       <div *ngIf="letter.revealed"> 
-
+          {{letter.value}}
       </div>
       <div *ngIf="!letter.revealed"> 
         _
@@ -13,8 +13,18 @@
   </div>
 
   <div class="word-selector">
-    <div class="letter" *ngFor="let letter of letters">
+    <div class="letter clickeable" *ngFor="let letter of letters">
+      <div (click)="selectLetter(letter)">
+        {{letter}}
+      </div>
     </div>
-  </div>
+  </div> 
+  <div class="button-container">
+    <mat-card>
+      <a mat-button (click)="reset()">Reiniciar palabra</a>
+    </mat-card>
+  </div> 
+  <mat-card-title>
+    {{message}}
+  </mat-card-title>
 </mat-card>
-<a mat-button (click)="reset()">Reiniciar palabra</a>

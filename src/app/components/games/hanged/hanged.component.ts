@@ -9,7 +9,9 @@ import { Letter } from 'src/app/classes/letter';
 export class HangedComponent implements OnInit {
   public word: Array<Letter> | null = null;
   public letters: Array<string> | null = null;
+  public attempts: number = 10;
   private readonly words: Array<string>
+  public message: string = 'Tiene 10 intentos';
   constructor() { 
     this.words = new Array<string>();
     this.words.push("perro");
@@ -25,11 +27,7 @@ export class HangedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.word = new Array<Letter>();
-    this.word.push(new Letter('a'));
-    this.word.push(new Letter('l'));
-    this.word.push(new Letter('c'));
-    this.word.push(new Letter('e'));
+    this.reset();
   }
 
   reset(): void {
@@ -38,6 +36,26 @@ export class HangedComponent implements OnInit {
     this.word = new Array<Letter>()
     newWord.split('').forEach(l => {
       this.word.push(new Letter(l));
-    })
+    });
+    this.attempts = 10;
+    this.message = '';
+  }
+
+  selectLetter(letter: string): void {
+    if(this.attempts > 0) {
+      this.attempts--;
+      this.word.forEach(l => {
+        if(l.value.toUpperCase() == letter.toUpperCase()) {
+          l.revealed = true;
+        }
+      });
+      if(this.word.every(l => l.revealed)) {
+        this.message = 'Gano! en solo ' + (10 - this.attempts) + 'intentos. Felicitaciones!';
+      } else {
+        this.message = 'Le quedan ' + this.attempts + ' intentos.';
+      }
+    } else {
+      this.message = 'No tiene más intentos';
+    }
   }
 }

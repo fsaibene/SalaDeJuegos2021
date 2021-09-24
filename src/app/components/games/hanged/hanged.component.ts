@@ -43,12 +43,18 @@ export class HangedComponent implements OnInit {
 
   selectLetter(letter: string): void {
     if(this.attempts > 0) {
-      this.attempts--;
+      let foundOne = false;
       this.word.forEach(l => {
         if(l.value.toUpperCase() == letter.toUpperCase()) {
           l.revealed = true;
+          foundOne = true;
         }
       });
+
+      if(!foundOne){
+        this.attempts--;
+      }
+      
       if(this.word.every(l => l.revealed)) {
         this.message = 'Gano! en solo ' + (10 - this.attempts) + 'intentos. Felicitaciones!';
       } else {
